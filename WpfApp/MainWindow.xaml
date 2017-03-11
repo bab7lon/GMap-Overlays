@@ -1,0 +1,41 @@
+﻿<Window x:Class="WpfApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:gmap="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation"
+        WindowStartupLocation="CenterScreen" WindowState="Maximized"
+        Height="375" Width="800" MinHeight="375" MinWidth="600"
+        Title="GMap.NET - Great Maps for Windows Presentation"
+        >
+    <DockPanel LastChildFill="True">
+        <Grid DockPanel.Dock="Right" Width="169">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <GroupBox Grid.Row="0" Header="Markers" Height="80" VerticalAlignment="Bottom">
+                <Grid>
+                    <Button Margin="7,6,77,0" Height="20" VerticalAlignment="Top" Click="addMarker_Click">Add Marker</Button>
+                    <Button Margin="7,0,0,6" Height="20" VerticalAlignment="Bottom" Click="clearAll_Click" HorizontalAlignment="Left" Width="56">Clear All</Button>
+                    <CheckBox HorizontalAlignment="Right" Margin="0,9,0,0" Name="checkBoxPlace" Width="71" VerticalAlignment="Top" IsChecked="True">place info</CheckBox>
+                    <Button Margin="78,0,1,5" Height="20" VerticalAlignment="Bottom" Click="zoomCenter_Click">Zoom Center</Button>
+                </Grid>
+            </GroupBox>
+            <GroupBox Grid.Row="1" Header="Overlay" VerticalAlignment="Top" Padding="7">
+                <ComboBox x:Name="combobox" SelectedIndex="0"
+                          SelectionChanged="combobox_SelectionChanged">
+                    <ComboBox.ItemsSource>
+                        <CompositeCollection>
+                            <ComboBoxItem>Markers overlay 1</ComboBoxItem>
+                            <ComboBoxItem>Markers overlay 2</ComboBoxItem>
+                            <ComboBoxItem>Markers overlay 3</ComboBoxItem>
+                            <ComboBoxItem>Activate All</ComboBoxItem>
+                        </CompositeCollection>
+                    </ComboBox.ItemsSource>
+                </ComboBox>
+            </GroupBox>
+        </Grid>
+        <GroupBox Name="mapgroup"  Header="gmap" Margin="12,7,7,12" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
+            <gmap:GMapControl x:Name="MainMap" Zoom="13" MaxZoom="24" MinZoom="1" />
+        </GroupBox>
+    </DockPanel>
+</Window>
